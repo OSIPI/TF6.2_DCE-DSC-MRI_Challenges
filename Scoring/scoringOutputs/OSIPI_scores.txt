@@ -1,0 +1,11 @@
+Scores for teams listed. 
+ 
+ 
+Entry team: constantKtransModel
+Reproducibility Score: 1.000
+Repeatability Score: 1.000
+Accuracy Score: 0.615
+OSIPI Score silver: 61.5%  
+OSIPI Score gold: 61.5%  
+ 
+ 

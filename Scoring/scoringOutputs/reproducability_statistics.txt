@@ -1,0 +1,2 @@
+Team 	 repro mean diff 	 repro SD diff 	 repro median diff 	 repro LQ diff  	  repro UQ diff 
+constantKtransModel 	 0.000e+00 	 0.000e+00 	 0.000e+00 	 0.000e+00 	 0.000e+00

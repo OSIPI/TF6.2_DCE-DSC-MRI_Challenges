@@ -93,7 +93,7 @@ for entries in entry_list: # cycles through each emtrance directory from list ab
     
     rsum = 0
     
-    if entries == 'Alice':
+    if entries == 'entry_requires_scaling':
         factor = 1000 # scaling factor from SOP
     else:
         factor = 1
@@ -114,18 +114,30 @@ for entries in entry_list: # cycles through each emtrance directory from list ab
         
         masked_v1 = v1 * m_1  
         masked_v2 = v2 * m_2
+
+        nan_m1 = np.copy(v1)
+        nan_m2 = np.copy(v2)
+
+        nan_m1[nan_m1<1e60]=1
+        nan_m1[nan_m1==1e60]=0
+        
+        nan_m2[nan_m2<1e60]=1
+        nan_m2[nan_m2==1e60]=0
+        
+        combo_m1 = nan_m1*m_1
+        combo_m2 = nan_m2*m_2
         
         if scoring_type == 'mean':
-            mean_v1 = masked_v1[m_1==1].mean()
-            mean_v2 = masked_v2[m_2==1].mean()
+            mean_v1 = masked_v1[combo_m1==1].mean()
+            mean_v2 = masked_v2[combo_m2==1].mean()
         elif scoring_type == 'median':
-            mean_v1 = np.median(masked_v1[m_1==1])
-            mean_v2 = np.median(masked_v2[m_2==1])
+            mean_v1 = np.median(masked_v1[combo_m1==1])
+            mean_v2 = np.median(masked_v2[combo_m2==1])
         else:
             print('No/invalid scoring type selected')
         
-        Ktrans_mask_std += [sfround(masked_v1[m_1==1].std(), sigfigs=3)]
-        Ktrans_mask_std += [sfround(masked_v2[m_2==1].std(), sigfigs=3)]
+        Ktrans_mask_std += [sfround(masked_v1[combo_m1==1].std(), sigfigs=3)]
+        Ktrans_mask_std += [sfround(masked_v2[combo_m2==1].std(), sigfigs=3)]
         
         Ktrans_mask_mean += [sfround(mean_v1, sigfigs=3)] # for Ktrans table and repeatability analysis
         Ktrans_mask_mean += [sfround(mean_v2, sigfigs=3)] # for Ktrans table and repeatability analysis
@@ -150,7 +162,14 @@ for entries in entry_list: # cycles through each emtrance directory from list ab
         gt_v2 = nocanonical_get_array_from_nifti('{}/Synthetic_P{}_ktrans_from_dicom/Visit2/Synthetic_P{}_Visit2_Ktrans_aligned_from_dicom.nii'.format(dro_dir,i+1,i+1))/1000#[:,:,:,0]
         gt_v1 = np.flip(gt_v1,axis=0)
         gt_v2 = np.flip(gt_v2,axis=0)
-            
+        
+        if entries == 'entry_requires_rotation': # Apply transformations to align with mask NIFTI
+            v1 = np.rot90(v1,k=-1)
+            v2 = np.rot90(v2,k=-1)
+        if entries == 'entry_requires_flip':
+            v1 = np.flip(v1,axis=1)
+            v2 = np.flip(v2,axis=1)
+
         m_1 = nocanonical_get_array_from_nifti('{}/{}'.format(mask_dir, s_mask_fnames[i*2])) # load mask arrays
         m_2 = nocanonical_get_array_from_nifti('{}/{}'.format(mask_dir, s_mask_fnames[(i*2)+1]))
 
@@ -160,11 +179,23 @@ for entries in entry_list: # cycles through each emtrance directory from list ab
         masked_gt_v1 = gt_v1 * m_1
         masked_gt_v2 = gt_v2 * m_2
         
+        nan_m1 = np.copy(v1)
+        nan_m2 = np.copy(v2)
+        
+        nan_m1[nan_m1<1e60]=1
+        nan_m1[nan_m1==1e60]=0
+        
+        nan_m2[nan_m2<1e60]=1
+        nan_m2[nan_m2==1e60]=0
+        
+        combo_m1 = nan_m1*m_1
+        combo_m2 = nan_m2*m_2
+        
         if scoring_type == 'mean':
-            mean_v1 = masked_v1[m_1==1].mean()
+            mean_v1 = masked_v1[combo_m1==1].mean()
             mean_gtv1 = masked_gt_v1[m_1==1].mean()
         elif scoring_type == 'median':
-            mean_v1 = np.median(masked_v1[m_1==1])
+            mean_v1 = np.median(masked_v1[combo_m1==1])
             mean_gtv1 = np.median(masked_gt_v1[m_1==1])
         else:
             print('No/invalid scoring type selected')
@@ -174,10 +205,10 @@ for entries in entry_list: # cycles through each emtrance directory from list ab
         frac_var_v1 = stdev/mean #coefficient of variation v1
         
         if scoring_type == 'mean':
-            mean_v2 = masked_v2[m_2==1].mean()
+            mean_v2 = masked_v2[combo_m2==1].mean()
             mean_gtv2 = masked_gt_v2[m_2==1].mean()
         elif scoring_type == 'median':
-            mean_v2 = np.median(masked_v2[m_2==1])
+            mean_v2 = np.median(masked_v2[combo_m2==1])
             mean_gtv2 = np.median(masked_gt_v2[m_2==1])
         else:
             print('No/invalid scoring type selected')
@@ -199,10 +230,10 @@ for entries in entry_list: # cycles through each emtrance directory from list ab
         Ktrans_mask_mean_gt += [sfround(mean_gtv1, sigfigs=3)]
         Ktrans_mask_mean_gt += [sfround(mean_gtv2, sigfigs=3)]
         
-        v1_diff = (masked_v1[m_1==1]-masked_gt_v1[m_1==1])
+        v1_diff = (masked_v1[combo_m1==1]-masked_gt_v1[combo_m1==1])
         total_diff += [v1_diff.flatten()]
 
-        v2_diff = (masked_v2[m_2==1]-masked_gt_v2[m_2==1])
+        v2_diff = (masked_v2[combo_m2==1]-masked_gt_v2[combo_m2==1])
         total_diff += [v2_diff.flatten(),]
         
     all_diff = np.concatenate( total_diff, axis=0 )
@@ -222,7 +253,18 @@ for entries in entry_list: # cycles through each emtrance directory from list ab
             v2 = nocanonical_get_array_from_nifti('{}/{}/{}'.format(list_dir,entries, all_fnames[(2*i)+1]))/factor
             repro_v1 = nocanonical_get_array_from_nifti('{}/{}_neutral/{}'.format(list_dir,entries, all_fnames[2*i]))/factor
             repro_v2 = nocanonical_get_array_from_nifti('{}/{}_neutral/{}'.format(list_dir,entries, all_fnames[(2*i)+1]))/factor
-                    
+            
+            if entries == 'entry_requires_rotation': # Apply transformations to align with mask NIFTI
+                v1 = np.rot90(v1,k=-1)
+                v2 = np.rot90(v2,k=-1)
+                repro_v1 = np.rot90(repro_v1,k=-1)
+                repro_v2 = np.rot90(repro_v2,k=-1)
+            if entries == 'entry_requires_flip':
+                v1 = np.flip(v1,axis=1)
+                v2 = np.flip(v2,axis=1)
+                repro_v1 = np.flip(repro_v1,axis=1)
+                repro_v2 = np.flip(repro_v2,axis=1)
+            
             m_1 = nocanonical_get_array_from_nifti('{}/{}'.format(mask_dir, all_mask_fnames[i*2])) # load mask arrays
             m_2 = nocanonical_get_array_from_nifti('{}/{}'.format(mask_dir, all_mask_fnames[(i*2)+1]))
  
@@ -230,13 +272,39 @@ for entries in entry_list: # cycles through each emtrance directory from list ab
             masked_v2 = v2 * m_2    
             masked_repro_v1 = repro_v1 * m_1
             masked_repro_v2 = repro_v2 * m_2
-        
+            
+            nan_m1 = np.copy(v1)
+            nan_m2 = np.copy(v2)
+            
+            nan_m1_r = np.copy(repro_v1)
+            nan_m2_r = np.copy(repro_v2)
+            
+            nan_m1[nan_m1<1e60]=1
+            nan_m1[nan_m1==1e60]=0
+            
+            nan_m1_r[nan_m1_r<1e60]=1
+            nan_m1_r[nan_m1_r==1e60]=0
+            
+            nan_m2[nan_m2<1e60]=1
+            nan_m2[nan_m2==1e60]=0
+            
+            nan_m2_r[nan_m2_r<1e60]=1
+            nan_m2_r[nan_m2_r==1e60]=0
+            
+            combo_m1 = nan_m1*m_1
+            combo_m2 = nan_m2*m_2
+            combo_m1_r = nan_m1_r*m_1
+            combo_m2_r = nan_m2_r*m_2
+            
+            full_combo_m1 = nan_m1*nan_m1_r*m_1
+            full_combo_m2 = nan_m2*nan_m2_r*m_2
+            
             if scoring_type == 'mean':
-                mean_v1 = masked_v1[m_1==1].mean()
-                mean_repro_v1 = masked_repro_v1[m_1==1].mean()
+                mean_v1 = masked_v1[combo_m1==1].mean()
+                mean_repro_v1 = masked_repro_v1[combo_m1_r==1].mean()
             elif scoring_type == 'median':
-                mean_v1 = np.median(masked_v1[m_1==1])
-                mean_repro_v1 = np.median(masked_repro_v1[m_1==1])
+                mean_v1 = np.median(masked_v1[combo_m1==1])
+                mean_repro_v1 = np.median(masked_repro_v1[combo_m1_r==1])
             else:
                 print('No/invalid scoring type selected')
             mean = np.mean((mean_v1,mean_repro_v1))
@@ -244,11 +312,11 @@ for entries in entry_list: # cycles through each emtrance directory from list ab
             frac_var_v1 = stdev/mean
             
             if scoring_type == 'mean':
-                mean_v2 = masked_v2[m_2==1].mean()
-                mean_repro_v2 = masked_repro_v2[m_2==1].mean()
+                mean_v2 = masked_v2[combo_m2==1].mean()
+                mean_repro_v2 = masked_repro_v2[combo_m2_r==1].mean()
             elif scoring_type == 'median':
-                mean_v2 = np.median(masked_v2[m_2==1])
-                mean_repro_v2 = np.median(masked_repro_v2[m_2==1])
+                mean_v2 = np.median(masked_v2[combo_m2==1])
+                mean_repro_v2 = np.median(masked_repro_v2[combo_m2_r==1])
             else:
                 print('No/invalid scoring type selected')
                 
@@ -263,9 +331,8 @@ for entries in entry_list: # cycles through each emtrance directory from list ab
             
             Ktrans_mask_mean_rep += [sfround(mean_repro_v1, sigfigs=3)] # for Ktrans table
             Ktrans_mask_mean_rep += [sfround(mean_repro_v2, sigfigs=3)]# for Ktrans table
-            Ktrans_mask_vox_rep += [repro_diff_v1[m_1==1].flatten()] #for voxelwise reproducibility
-            Ktrans_mask_vox_rep += [repro_diff_v2[m_2==1].flatten()]#for voxelwise reproducibility
-
+            Ktrans_mask_vox_rep += [repro_diff_v1[full_combo_m1==1].flatten()] #for voxelwise reproducibility
+            Ktrans_mask_vox_rep += [repro_diff_v2[full_combo_m2==1].flatten()]#for voxelwise reproducibility
         repro_score = (np.exp( - (repro_sum/(2*len(all_P)) ) ) ) # calculate reproducibility score        
 
     else:

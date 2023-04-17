@@ -1,0 +1,2 @@
+Team 	 Accuracy 	 Repeatability 	 Reproducibility 	 OSIPI score silver 	 OSIPI score gold 
+constantKtransModel 	 0.615 	 1.000 	 1.000 	 61.5 	 61.5 

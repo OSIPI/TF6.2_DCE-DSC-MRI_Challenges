@@ -1,0 +1,3 @@
+Team 	 dK (prop) SP1 	 dK (prop) SP2 
+DRO 	 0.626 	 0.363 
+constantKtransModel 	 0.000 	 0.000 

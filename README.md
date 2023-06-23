@@ -25,12 +25,12 @@ This data and code collection includes:
 
 All the parameter maps used in this repository can be found in the syntehtic data part of the repository [here](SyntheticData). The are serveral data types available: [NIfTI](SyntheticData/NIfTI) or [numpy array files](SyntheticData/pythonArraysDRO). These maps include:
 
--**Ktrans**
-- **Plasma Volume Fraction (vp)**
+- **Volume transfer constant ($K^{trans}$)**
+- **Plasma Volume Fraction ($v_{p}$)**
 - **Leakage Rate (kep)**
 - **Arterial Input Function (AIF)**
--**Precontrast Longitudinal Relaxation Rate (R10)**
-- **Precontrast Transverse Relaxation Rate (R*20)**
+-**Precontrast Longitudinal Relaxation Rate ($R_{10}$)**
+- **Precontrast Transverse Relaxation Rate ($R^{*}_{20}$)**
 
 ### Mask NIfTI Files
 
@@ -44,6 +44,8 @@ To use the scoring script, follow these steps:
 
 1. Ensure that you have a fully analyzed dataset with Ktrans NIfTI files for each synthetic and clinical patient.
 2. Modify the script as needed to provide the necessary paths to your Ktrans NIfTI files.
+ - Recommended to save as inside a 'TeamName' directory and seperate 'TeamName_neutral' directory for reproduced entry values.
+ - See example directories in the correct formatting in the constant Ktrans [test case](Scoring/entryDirectories)
 3. Run the script using a compatible Python environment to obtain the evaluation scores for your method.
 
 Please note that the scoring script assumes the availability of the required data files and follows specific guidelines outlined
@@ -55,7 +57,7 @@ A scoring script is provided in this repository [here](Scoring/challengeScoring.
 1. Clone or pull this directory
 2. Analyse the Challenge data set
     - Find the challenge data for download [here](https://osf.io/u7a6f/files)
-3. Save Nifti files in specifc name format which is different for synthetic and clinical data sets:
+3. Save NIfTI files in specifc name format which is different for synthetic and clinical data sets:
     - Synthetic_P#_Visit#.nii
     - Clinical_P#_Visit#.nii
     - See an example directory in the correct formatting in the constant Ktrans [test case](Scoring/entryDirectories/constantKtransModel)

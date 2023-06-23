@@ -29,7 +29,7 @@ All the parameter maps used in this repository can be found in the syntehtic dat
 - **Plasma Volume Fraction ($v_{p}$)**
 - **Leakage Rate (kep)**
 - **Arterial Input Function (AIF)**
--**Precontrast Longitudinal Relaxation Rate ($R_{10}$)**
+- **Precontrast Longitudinal Relaxation Rate ($R_{10}$)**
 - **Precontrast Transverse Relaxation Rate ($R^{*}_{20}$)**
 
 ### Mask NIfTI Files

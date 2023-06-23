@@ -52,7 +52,9 @@ Please note that the scoring script assumes the availability of the required dat
 
 ## Scoring Script Usage
 
-A scoring script is provided in this repository [here](Scoring/challengeScoring.py). This script is designed to evaluate the performance of different Ktrans submissions for the challenge data. However, please note that using this script requires a fully analyzed dataset consisting of $K^{trans}$ NIfTI files for each synthetic and clinical patient as seen in uploaded [test folder](Scoring/entryDirectories/constantKtransModel).
+A scoring script is provided in this repository: [challengeScoring.py](Scoring/challengeScoring.py). This script is designed to evaluate the performance of different $K^{trans}$ submissions for the challenge data. However, please note that using this script requires a fully analyzed dataset consisting of $K^{trans}$ NIfTI files for each synthetic and clinical patient as seen in uploaded [test folder](Scoring/entryDirectories/constantKtransModel).
+
+To use the scoring script, follow these steps:
 
 1. Clone or pull this directory.
 2. Analyse the Challenge data set.
@@ -62,6 +64,19 @@ A scoring script is provided in this repository [here](Scoring/challengeScoring.
     - Synthetic_P#_Visit#.nii; Clinical_P#_Visit#.nii
     - See an example directory in the correct formatting in the constant $K^{trans}$ [test case](Scoring/entryDirectories/constantKtransModel).
     - If files are not named correctly the scoring script will not run as expected.
-4. Add your directory to entry_list in the scroring script.
-5. Run!
+4. Ensure that you have a fully analyzed dataset with $K^{trans}$ NIfTI files for each synthetic and clinical patient.
+5. Add your directory to [entryDirectories](Scoring/entryDirectories) in the [Scoring](Scoring) location.
+    - Recommended to save as inside a 'TeamName' directory and seperate 'TeamName_neutral' directory for reproduced entry values.
+    - See example directories in the correct formatting in the constant $K^{trans}$ [test case](Scoring/entryDirectories).
+6. Modify the script as needed to provide the necessary paths to your $K^{trans}$ NIfTI files.
+    - Add yout 'TeamNAme' that you have chosen for the directory in [entryDirectories](Scoring/entryDirectories) to `entry_list`.
+7. Run the script using a compatible Python environment to obtain the evaluation scores for your method.
+
+### Python Package Requirements
+- numpy 1.20.1
+- matplotlib 3.3.4
+- pydicom 2.1.2
+- scipy 1.6.1
+- nibabel 3.2.1
+
 

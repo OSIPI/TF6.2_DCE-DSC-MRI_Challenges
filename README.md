@@ -44,8 +44,8 @@ To use the scoring script, follow these steps:
 
 1. Ensure that you have a fully analyzed dataset with $K^{trans}$ NIfTI files for each synthetic and clinical patient.
 2. Modify the script as needed to provide the necessary paths to your $K^{trans}$ NIfTI files.
- - Recommended to save as inside a 'TeamName' directory and seperate 'TeamName_neutral' directory for reproduced entry values.
- - See example directories in the correct formatting in the constant $K^{trans}$ [test case](Scoring/entryDirectories).
+    - Recommended to save as inside a 'TeamName' directory and seperate 'TeamName_neutral' directory for reproduced entry values.
+    - See example directories in the correct formatting in the constant $K^{trans}$ [test case](Scoring/entryDirectories).
 3. Run the script using a compatible Python environment to obtain the evaluation scores for your method.
 
 Please note that the scoring script assumes the availability of the required data files and follows specific guidelines outlined
@@ -59,9 +59,9 @@ A scoring script is provided in this repository [here](Scoring/challengeScoring.
     - Find the challenge data for download [here](https://osf.io/u7a6f/files).
     - Follow the Challenge guidelines [here](https://osf.io/qagc3).
 3. Save your $K^{trans}$ NIfTI map in specifc naming format which is different for synthetic and clinical data sets:
-- Synthetic_P#_Visit#.nii; Clinical_P#_Visit#.nii
-- See an example directory in the correct formatting in the constant $K^{trans}$ [test case](Scoring/entryDirectories/constantKtransModel).
-- If files are not named correctly the scoring script will not run as expected.
+    - Synthetic_P#_Visit#.nii; Clinical_P#_Visit#.nii
+    - See an example directory in the correct formatting in the constant $K^{trans}$ [test case](Scoring/entryDirectories/constantKtransModel).
+    - If files are not named correctly the scoring script will not run as expected.
 4. Add your directory to entry_list in the scroring script.
 5. Run!
 

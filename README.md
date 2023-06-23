@@ -14,16 +14,16 @@ The submissions were then ranked according to a global score reflecting that an 
 This data and code collection includes:
 - The Digital Reference Object parameter maps used the simulate the synthetic patient data:
     * NIfTI files
-    * Compressed numpy array files
+    * Compressed [numpy array files](SyntheticData/pythonArraysDRO)
 - Challenge DICOM data:
     * [Synthetic patient data](SyntheticData/SyntheticDicom) provided for the challenge.
-- [Scoring script](Scoring/challengeScoring.py). used for the challenge:
+- [Scoring script](Scoring/challengeScoring.py) used for the challenge:
     * This calculates scores with plotting options.
 - [Nifti mask files](Scoring/Masks) to extract tumor regions-of-interest defined for the challenge
 
 ### Parameter Maps
 
-All the parameter maps used in this repository can be found in the syntehtic data part of the repository [here](SyntheticData). The are serveral data types available: [NIfII](SyntheticData/NIfTI) or [numpy array files](SyntheticData/pythonArraysDRO). These maps include:
+All the parameter maps used in this repository can be found in the syntehtic data part of the repository [here](SyntheticData). The are serveral data types available: [NIfTI](SyntheticData/NIfTI) or [numpy array files](SyntheticData/pythonArraysDRO). These maps include:
 
 -**Ktrans**
 - **Plasma Volume Fraction (vp)**

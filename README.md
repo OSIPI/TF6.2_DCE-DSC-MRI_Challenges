@@ -32,13 +32,13 @@ All the parameter maps used in this repository can be found in the syntehtic dat
 -**Precontrast Longitudinal Relaxation Rate (R10)**
 - **Precontrast Transverse Relaxation Rate (R*20)**
 
-## Mask NIfTI Files
+### Mask NIfTI Files
 
-The mask NIfTI files, which define the regions of interest for the analysis, can be found in the following file: `[path/to/mask/files]`. These mask files should be used to restrict the analysis to specific regions of interest within the DCE-MRI data.
+The mask NIfTI files, which define the regions of interest for the analysis, can be found [here](Scoring/Masks). These mask files should be used to restrict the scoring area to specific regions of interest within the DCE-MRI data.
 
 ## Scoring Script
 
-A scoring script is provided in this repository titled `scoring_script.py`. This script is designed to evaluate the performance of different methods on the challenge data. However, please note that using this script requires a fully analyzed dataset consisting of Ktrans NIfTI files for each synthetic and clinical patient.
+A scoring script is provided in this repository titled [challengeScoring.py](Scoring/challengeScoring.py). This script is designed to evaluate the performance of different methods on the challenge data. However, please note that using this script requires a fully analyzed dataset consisting of Ktrans NIfTI files for each synthetic and clinical patient.
 
 To use the scoring script, follow these steps:
 

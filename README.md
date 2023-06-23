@@ -4,7 +4,7 @@ This repository accompanies the ISMRM-OSIPI DCE-MRI Challenge and provides suppl
 
 A set of parameter maps and scripts for analyzing the challenge data are provided withi this repository. For access to the challenge guidelines and challenge DICOM data files see the OSF repository (https://osf.io/u7a6f).
 
-## Challenge Overview
+# Challenge Overview
 
  Analysis methods were submitted by competing teams which were evaluated and compared with each other for quantification of Ktrans from DCE-MRI in terms of accuracy, repeatability, and reproducibility. The accuracy of Ktrans estimations by the participating teams were scored based on synthetic data, i.e., 2 digital reference objects (DROs) each including 2 visits, specifically designed for this challenge; repeatability was rated based on test-retest DCE-MRI scans of 8 patients from RIDER Neuro MRI Database; reproducibility was assessed based on an independent analysis by a neutral team.
 
@@ -12,16 +12,16 @@ The submissions were then ranked according to a global score reflecting that an 
 
 ## Repository Overview
 This data and code collection includes:
-- The Digital Reference Object parameter maps used the simulate the synthetic patient data
-    * NIfTI files of the Ktrans maps: DROKtransNifti
-    * Compressed numpy array files: pythonArraysDRO
+- The Digital Reference Object parameter maps used the simulate the synthetic patient data:
+    * NIfTI files
+    * Compressed numpy array files
 - Challenge DICOM data:
-    * Synthetic patient data provided for the challenge: SyntheticDicom
-- Scoring script used for the challenge:
-    * challengeScoring.py: Just scores caluclated with plotting options.
-- Nifti mask files to extract tumor regions-of-interest defined for the challenge: Masks
+    * [Synthetic patient data](SyntheticData/SyntheticDicom) provided for the challenge.
+- [Scoring script](Scoring/challengeScoring.py). used for the challenge:
+    * This calculates scores with plotting options.
+- [Nifti mask files](Scoring/Masks) to extract tumor regions-of-interest defined for the challenge
 
-## Parameter Maps
+### Parameter Maps
 
 All the parameter maps used in this repository can be found in the syntehtic data part of the repository [here](SyntheticData). The are serveral data types available: [NIfII](SyntheticData/NIfTI) or [numpy array files](SyntheticData/pythonArraysDRO). These maps include:
 

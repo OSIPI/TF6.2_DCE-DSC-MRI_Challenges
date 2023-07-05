@@ -83,12 +83,11 @@ To use the scoring script, follow these steps:
 
 The fiel contained in the [DRO_production](DRO_Production) directory were used to produce the synthetic data used in the challenge.
 
-.important {
-background-color: yellow;
-padding: 10px;
-border: 1px solid black;
-}
-> <div class="important">Please unzip files before use.</div>
+>**Warning**
+>You must unzip the files in [AIFmasksforDRO](DRO_Production/AIFmasksforDRO) otherwise the script will not run correctly, unless you wish to define your own AIF regions.
+
+>**Note**
+>To select your own AIF region please adjust the `use_saved` parameter to `0` on `Line 93`.
 
 * All functions used can be found within the [enclosing folder](DRO_Production)
 * To run using challenge ROIs for AIF please unzip the .npy files in the [AIFmasksforDRO](DRO_Production/AIFmasksforDRO) directory

@@ -6,7 +6,7 @@ A set of parameter maps and scripts for analyzing the challenge data are provide
 
 # Challenge Overview
 
- Analysis methods were submitted by competing teams which were evaluated and compared with each other for quantification of $K^{trans}$ from DCE-MRI in terms of accuracy, repeatability, and reproducibility. The accuracy of $K^{trans}$ estimations by the participating teams were scored based on synthetic data, i.e., 2 digital reference objects (DROs) each including 2 visits, specifically designed for this challenge; repeatability was rated based on test-retest DCE-MRI scans of 8 patients from RIDER Neuro MRI Database; reproducibility was assessed based on an independent analysis by a neutral team.
+ Analysis methods were submitted by competing teams which were evaluated and compared with each other for quantification of $K^{trans}$ from DCE-MRI in terms of accuracy, repeatability, and reproducibility. The accuracy of $K^{trans}$ estimations by the participating teams were scored based on synthetic data, i.e., 2 digital reference objects (DROs) each including 2 visits, specifically designed for this challenge; repeatability was rated based on test-retest DCE-MRI scans of 8 patients from [RIDER Neuro MRI Database](https://wiki.cancerimagingarchive.net/display/Public/RIDER+NEURO+MRI); reproducibility was assessed based on an independent analysis by a neutral team.
 
 The submissions were then ranked according to a global score reflecting that an ideal method should be accurate AND repeatable AND reproducible.
 

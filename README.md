@@ -19,6 +19,8 @@ This data and code collection includes:
     * [Synthetic patient data](ChallengeDICOMData/Synthetic_Data) provided for the challenge.
     * [Clinical patient data](ChallengeDICOMData/Clinical_Data) provided for the challenge.
     * These data are based on (Synthetic) or directly (Clinical) from the [RIDER NEURO Database from TCIA](https://wiki.cancerimagingarchive.net/display/Public/RIDER+NEURO+MRI)
+        * Barboriak, D. (2015). Data From RIDER NEURO MRI. The Cancer Imaging Archive. https://doi.org/10.7937/K9/TCIA.2015.VOSN3HN1
+        * Clark, K., Vendt, B., Smith, K., Freymann, J., Kirby, J., Koppel, P., Moore, S., Phillips, S., Maffitt, D., Pringle, M., Tarbox, L., & Prior, F. (2013). The Cancer Imaging Archive (TCIA): Maintaining and Operating a Public Information Repository. In Journal of Digital Imaging (Vol. 26, Issue 6, pp. 1045–1057). Springer Science and Business Media LLC. https://doi.org/10.1007/s10278-013-9622-7 PMCID: PMC3824915
 - [Scoring script](Scoring/challengeScoring.py) used for the challenge:
     * This calculates scores with plotting options.
 - [NIfTI mask files](Scoring/Masks) to extract tumor regions-of-interest defined for the challenge

@@ -18,22 +18,17 @@ This data and code collection includes:
 - Challenge DICOM data:
     * [Synthetic patient data](ChallengeDICOMData/Synthetic_Data) provided for the challenge.
     * [Clinical patient data](ChallengeDICOMData/Clinical_Data) provided for the challenge.
+    * These data are based on (Synthetic) or directly (Clinical) from the [RIDER NEURO Database from TCIA](https://wiki.cancerimagingarchive.net/display/Public/RIDER+NEURO+MRI)
 - [Scoring script](Scoring/challengeScoring.py) used for the challenge:
     * This calculates scores with plotting options.
 - [NIfTI mask files](Scoring/Masks) to extract tumor regions-of-interest defined for the challenge
 - [DRO production code](DRO_Production/main.py):
-  * 
+    * All functions used can be found within the [enclosing folder](DRO_Production)
+    * The run using challenge ROIs for AIF please unzip the .npy files in the [AIFmasksforDRO](DRO_Production/AIFmasksforDRO) directory
 
 ### Parameter Maps
 
-All the parameter maps used in this repository can be found in the syntehtic data part of the repository [here](SyntheticData). The are serveral data types available: [NIfTI](SyntheticData/NIfTI) or [numpy array files](SyntheticData/pythonArraysDRO). These maps include:
-
-- **Volume transfer constant ($K^{trans}$)**
-- **Plasma Volume Fraction ($v_{p}$)**
-- **Leakage Rate (kep)**
-- **Arterial Input Function (AIF)**
-- **Precontrast Longitudinal Relaxation Rate ($R_{10}$)**
-- **Precontrast Transverse Relaxation Rate ($R^{*}_{20}$)**
+All the parameter maps used in this repository can be found in the synthetic data part of the repository [here](additionalDROData). The are serveral data types available: [NIfTI](additionalDROData/NIfTI) or [numpy array files](additionalDROData/pythonArraysDRO). These maps include $K^{trans}$, $v_{p}$, $k_{ep}$, AIF and $R_{10}$.
 
 ### Mask NIfTI Files
 
@@ -61,8 +56,8 @@ To use the scoring script, follow these steps:
 
 1. Clone or pull this directory.
 2. Analyse the Challenge data set.
-    - Find the challenge data for download [here](https://osf.io/u7a6f/files).
-    - Follow the Challenge guidelines [here](https://osf.io/qagc3).
+    - Find the challenge data for download in [this repository](ChallengeDICOMData), or at the [OSF page](https://osf.io/u7a6f/files).
+    - Follow the [Challenge guidelines](OSIPI_DCE_Challenge_Guidelines.pdf).
 3. Save your $K^{trans}$ NIfTI map in specifc naming format which is different for synthetic and clinical data sets:
     - Synthetic_P#_Visit#.nii; Clinical_P#_Visit#.nii
     - See an example directory in the correct formatting in the constant $K^{trans}$ [test case](Scoring/entryDirectories/constantKtransModel).

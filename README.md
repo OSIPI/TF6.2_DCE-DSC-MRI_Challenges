@@ -81,15 +81,24 @@ To use the scoring script, follow these steps:
 
 # DRO Production
 
-The fiel contained in the [DRO_production](DRO_Production) directory were used to produce the synthetic data used in the challenge.
+The files contained in the [DRO_production](DRO_Production) directory were used to produce the synthetic data used in the challenge.
 
 >**Warning**
 >You must unzip the files in [AIFmasksforDRO](DRO_Production/AIFmasksforDRO) otherwise the script will not run correctly, unless you wish to define your own AIF regions.
 
 >**Note**
->To select your own AIF region please adjust the `use_saved` parameter to `0` on `Line 93`.
+>To select your own AIF region please adjust the `use_saved` parameter to `0` on `Line 93` of [main.py](DRO_Production/main.py).
 
-* All functions used can be found within the [enclosing folder](DRO_Production)
-* To run using challenge ROIs for AIF please unzip the .npy files in the [AIFmasksforDRO](DRO_Production/AIFmasksforDRO) directory
+To use:
+- The overall script file is [`main.py`](DRO_Production/main.py).
+- Make sure all relevant files are unzipped (see notes above).
+- The script has to be run seperately for synthetic patient 1 and 2.
+    * Change `DROnum` to `1` or `2` between runs.
+- If you wish to output new DRO data change `save_new_DRO_data` to `1` on `Line 45`.
+- If you have selected to chose you own AIF a pop up window will appear.
+    * You need to trace a full region outline or it will auto connect the end two points with a stright line.
+    * You may select more than one region.
+    * Close the pop up after you have selected all regions and the array data will be saved in the script.
+- To apply this for other DICOM DCE-MRI data provide the correct paths in `Lines 29-40`.
 
 

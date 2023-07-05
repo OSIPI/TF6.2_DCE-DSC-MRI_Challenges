@@ -13,13 +13,16 @@ The submissions were then ranked according to a global score reflecting that an 
 ## Repository Overview
 This data and code collection includes:
 - The Digital Reference Object parameter maps used the simulate the synthetic patient data:
-    * [NIfTI files](SyntheticData/NIfTI)
-    * Compressed [numpy array files](SyntheticData/pythonArraysDRO)
+    * [NIfTI files](additionalDROData/NIfTI)
+    * Compressed [numpy array files](additionalDROData/pythonArraysDRO)
 - Challenge DICOM data:
-    * [Synthetic patient data](SyntheticData/SyntheticDicom) provided for the challenge.
+    * [Synthetic patient data](ChallengeDICOMData/Synthetic_Data) provided for the challenge.
+    * [Clinical patient data](ChallengeDICOMData/Clinical_Data) provided for the challenge.
 - [Scoring script](Scoring/challengeScoring.py) used for the challenge:
     * This calculates scores with plotting options.
 - [NIfTI mask files](Scoring/Masks) to extract tumor regions-of-interest defined for the challenge
+- [DRO production code](DRO_Production/main.py):
+  * 
 
 ### Parameter Maps
 

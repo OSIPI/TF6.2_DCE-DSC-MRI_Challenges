@@ -22,7 +22,7 @@ from Conc2DROSignal import STDmap, addnoise
 import pydicom
 
 #%% DRO directory
-
+# IMPORTANT YOU MUST EXTRACT THE ZIP FILES IN DIRECTORY 'AIFmasksforDRO' TO RUN IN CURRENT STATE #
 DROnum = 2 #Choose 1 or 2
 uidprefix = '1.3.6.1.4.1.9328.50.16.'
 
@@ -30,13 +30,13 @@ if DROnum == 1:
     dro_IDnum = '7868737135'
     dirPath = 'original_RIDER_Patients/RIDER Neuro MRI-1023805636/09-01-1904-BRAINRESEARCH-87950/13.000000-perfusion-23726/'
     dir_prot = 'original_RIDER_Patients/RIDER Neuro MRI-1023805636'
-    aif_dir = 'savedArraysforDRO/Synthetic_P1/'
+    aif_dir = 'AIFmasksforDRO/Synthetic_P1/'
     
 if DROnum == 2:
     dro_IDnum = '9215224289'
     dirPath = 'original_RIDER_Patients/RIDER Neuro MRI-3369019796/03-21-1904-BRAINRESEARCH-71264/12.000000-perfusion-17557/
     dir_prot = 'original_RIDER_Patients/RIDER Neuro MRI-3369019796'
-    aif_dir = 'savedArraysforDRO/Synthetic_P2/'
+    aif_dir = 'AIFmasksforDRO/Synthetic_P2/'
 
 Study1UID = pydicom.uid.generate_uid(prefix=uidprefix)
 Study2UID = pydicom.uid.generate_uid(prefix=uidprefix)

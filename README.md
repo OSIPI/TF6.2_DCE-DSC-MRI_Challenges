@@ -10,7 +10,7 @@ A set of parameter maps and scripts for analyzing the challenge data are provide
 
 The submissions were then ranked according to a global score reflecting that an ideal method should be accurate AND repeatable AND reproducible.
 
-## Repository Overview
+# Repository Overview
 This data and code collection includes:
 - The Digital Reference Object parameter maps used the simulate the synthetic patient data:
     * [NIfTI files](additionalDROData/NIfTI)
@@ -24,19 +24,19 @@ This data and code collection includes:
 - [Scoring script](Scoring/challengeScoring.py) used for the challenge:
     * This calculates scores with plotting options.
 - [NIfTI mask files](Scoring/Masks) to extract tumor regions-of-interest defined for the challenge
-- [DRO production code](DRO_Production/main.py):
+- [DRO production code](DRO_Production/main.py) used to produce the synthetic data used in the challenge:
     * All functions used can be found within the [enclosing folder](DRO_Production)
-    * The run using challenge ROIs for AIF please unzip the .npy files in the [AIFmasksforDRO](DRO_Production/AIFmasksforDRO) directory
+    * To run using challenge ROIs for AIF please unzip the .npy files in the [AIFmasksforDRO](DRO_Production/AIFmasksforDRO) directory
 
-### Parameter Maps
+## Parameter Maps
 
 All the parameter maps used in this repository can be found in the synthetic data part of the repository [here](additionalDROData). The are serveral data types available: [NIfTI](additionalDROData/NIfTI) or [numpy array files](additionalDROData/pythonArraysDRO). These maps include $K^{trans}$, $v_{p}$, $k_{ep}$, AIF and $R_{10}$.
 
-### Mask NIfTI Files
+## Mask NIfTI Files
 
 The mask NIfTI files, which define the regions of interest for the analysis, can be found [here](Scoring/Masks). These mask files should be used to restrict the scoring area to specific regions of interest within the DCE-MRI data.
 
-## Scoring Script
+# Scoring Script
 
 A scoring script is provided in this repository titled [challengeScoring.py](Scoring/challengeScoring.py). This script is designed to evaluate the performance of different methods on the challenge data. However, please note that using this script requires a fully analyzed dataset consisting of Ktrans NIfTI files for each synthetic and clinical patient.
 
@@ -49,6 +49,13 @@ To use the scoring script, follow these steps:
 3. Run the script using a compatible Python environment to obtain the evaluation scores for your method.
 
 Please note that the scoring script assumes the availability of the required data files and follows specific guidelines outlined
+
+## Python Package Requirements
+- numpy 1.20.1
+- matplotlib 3.3.4
+- pydicom 2.1.2
+- scipy 1.6.1
+- nibabel 3.2.1
 
 ## Scoring Script Usage
 
@@ -72,11 +79,18 @@ To use the scoring script, follow these steps:
     - Add yout 'TeamNAme' that you have chosen for the directory in [entryDirectories](Scoring/entryDirectories) to `entry_list`.
 7. Run the script using a compatible Python environment to obtain the evaluation scores for your method.
 
-### Python Package Requirements
-- numpy 1.20.1
-- matplotlib 3.3.4
-- pydicom 2.1.2
-- scipy 1.6.1
-- nibabel 3.2.1
+# DRO Production
+
+The fiel contained in the [DRO_production](DRO_Production) directory were used to produce the synthetic data used in the challenge.
+
+.important {
+background-color: yellow;
+padding: 10px;
+border: 1px solid black;
+}
+> <div class="important">Please unzip files before use.</div>
+
+* All functions used can be found within the [enclosing folder](DRO_Production)
+* To run using challenge ROIs for AIF please unzip the .npy files in the [AIFmasksforDRO](DRO_Production/AIFmasksforDRO) directory
 
 
